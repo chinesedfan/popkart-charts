@@ -2,7 +2,7 @@
     <div>
         <el-row>
             <el-col :span="12">
-                <radar-chart></radar-chart>
+                <radar-chart :axis-data="axisData"></radar-chart>
             </el-col>
             <el-col :span="12">
                 <bar-chart></bar-chart>
@@ -18,7 +18,7 @@ import RadarChart from './radar-chart';
 import BarChart from './bar-chart';
 import CarsTable from './cars-table';
 
-import Cars from '../constants/cars';
+import { Cars, CarProps } from '../constants/game';
 
 export default {
     components: {
@@ -30,6 +30,16 @@ export default {
         return {
             cars: Cars,
         };
+    },
+    computed: {
+        axisData() {
+            return this.cars.map(({name, properties}) => ({
+                axes: properties.map((p, i) => ({
+                    axis: CarProps[i],
+                    value: p,
+                }))
+            }))
+        },
     },
 };
 </script>
