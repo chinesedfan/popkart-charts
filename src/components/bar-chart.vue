@@ -2,6 +2,8 @@
     <div id="bar-chart"></div>
 </template>
 <script>
+import { CarProps } from '../constants/game';
+
 export default {
     props: ['car', 'otherCar'],
     mounted() {
@@ -9,29 +11,56 @@ export default {
     },
     methods: {
         draw() {
-            const w = 500;
-            const h = 400;
-            const dataset = this.car.properties; // [val]
+            const w = 570;
+            const h = 300;
 
             const svg = d3.select('#bar-chart')
-              .append('svg')
-              .attr('width', w)
-              .attr('height', h);
+                .append('svg')
+                .attr('transform', `translate(20,75)`)
+                .attr('width', w)
+                .attr('height', h);
 
+            // labels
+            const labelWidth = 70;
+            svg.selectAll('text')
+                .data(CarProps)
+                .enter()
+                .append('text')
+                .attr('x', 0)
+                .attr('y', (d, i) => i * 30 + 18)
+                .text((d) => d);
+
+            // bars
+            const barWidth = 330;
             svg.selectAll('rect')
-               .data(dataset)
-               .enter()
-               .append('rect')
-               .attr('y', (d, i) => i * 30)
-               .attr('x', 0)
-               .attr('height', 25)
-               .attr('width', (d) => d % w);
+                .data(this.car.properties)
+                .enter()
+                .append('rect')
+                .attr('fill', 'blue')
+                .attr('x', labelWidth + 20)
+                .attr('y', (d, i) => i * 30)
+                .attr('width', (d) => Math.floor(d * barWidth / 1000))
+                .attr('height', 25);
+
+            // diffs
+            if (!this.otherCar) return;
+            svg.append('g')
+                .selectAll('text')
+                .data(this.car.properties)
+                .enter()
+                .append('text')
+                .attr('x', labelWidth + 20 + barWidth + 20)
+                .attr('y', (d, i) => i * 30 + 18)
+                .text((d, i) => {
+                    const diff = d - this.otherCar.properties[i];
+                    return `${d} (${diff < 0 ? diff : '+' + diff})`;
+                });
         }
     },
 };
 </script>
 <style lang="less" scoped>
 div {
-    height: 400px;
+    height: 300px;
 }
 </style>

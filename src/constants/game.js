@@ -1,4 +1,5 @@
 export const Cars = [
+    { name: 'MAX', type: '竞速', rarity: '传说', properties: [1000, 1000, 1000, 1000, 1000] },
     { name: '蔷薇棉花糖', type: '竞速', rarity: '传说', properties: [757, 762, 794, 743, 833] },
     { name: '绯红尖峰', type: '竞速', rarity: '传说', properties: [751, 772, 802, 743, 835] },
     { name: '赤炎魔怪', type: '竞速', rarity: '传说', properties: [783, 794, 809, 762, 758] },
