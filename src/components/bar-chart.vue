@@ -6,6 +6,14 @@ import { CarProps } from '../constants/game';
 
 export default {
     props: ['car', 'otherCar'],
+    watch: {
+        car() {
+            this.draw();
+        },
+        otherCar() {
+            this.draw();
+        },
+    },
     mounted() {
         this.draw();
     },
@@ -15,6 +23,7 @@ export default {
             const h = 300;
 
             const svg = d3.select('#bar-chart')
+                .html('')
                 .append('svg')
                 .attr('transform', `translate(20,75)`)
                 .attr('width', w)
@@ -33,7 +42,7 @@ export default {
             // bars
             const barWidth = 330;
             svg.selectAll('rect')
-                .data(this.car.properties)
+                .data((this.otherCar || this.car).properties)
                 .enter()
                 .append('rect')
                 .attr('fill', 'blue')
@@ -43,7 +52,6 @@ export default {
                 .attr('height', 25);
 
             // diffs
-            if (!this.otherCar) return;
             svg.append('g')
                 .selectAll('text')
                 .data(this.car.properties)
@@ -52,7 +60,9 @@ export default {
                 .attr('x', labelWidth + 20 + barWidth + 20)
                 .attr('y', (d, i) => i * 30 + 18)
                 .text((d, i) => {
-                    const diff = d - this.otherCar.properties[i];
+                    if (!this.otherCar) return d;
+
+                    const diff = this.otherCar.properties[i] - d;
                     return `${d} (${diff < 0 ? diff : '+' + diff})`;
                 });
         }

@@ -9,7 +9,7 @@
             </el-col>
         </el-row>
         <el-row>
-            <cars-table :cars="tableCars" :on-select="onCarItemSelect"></cars-table>
+            <cars-table :cars="tableCars" :selected="barCar" :selected2="barOtherCar" :on-select="onCarItemSelect"></cars-table>
         </el-row>
     </div>
 </template>
@@ -20,6 +20,9 @@ import CarsTable from './cars-table';
 
 import { Cars, CarProps, CarFilters } from '../constants/game';
 
+const CAR_MAX =
+    { name: 'MAX', type: '竞速', rarity: '传说', properties: [1000, 1000, 1000, 1000, 1000] };
+
 export default {
     components: {
         RadarChart,
@@ -29,6 +32,9 @@ export default {
     data() {
         return {
             cars: Cars,
+            barCar: CAR_MAX,
+            barCarLocked: false,
+            barOtherCar: null,
         };
     },
     computed: {
@@ -36,17 +42,11 @@ export default {
             return this.cars.map(({name, properties}) => ({
                 axes: properties.map((p, i) => ({
                     axis: CarProps[i],
-                    // value: p,
-                    value: 1000,
+                    value: p,
+                    // value: 1000,
                     // value: Math.random() * 1000,
                 }))
             }));
-        },
-        barCar() {
-            return this.cars[0];
-        },
-        barOtherCar() {
-            return this.cars[1];
         },
         tableCars() {
             const cars = Cars;
@@ -69,7 +69,20 @@ export default {
     },
     methods: {
         onCarItemSelect(car) {
-
+            const isSame = car.name === this.barCar.name;
+            if (this.barCarLocked) {
+                if (isSame) {
+                    this.barCarLocked = false;
+                } else {
+                    this.barOtherCar = car;
+                }
+            } else {
+                if (isSame) {
+                    this.barCarLocked = true;
+                } else {
+                    this.barCar = car;
+                }
+            }
         },
     },
 };

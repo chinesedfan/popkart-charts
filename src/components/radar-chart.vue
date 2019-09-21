@@ -5,7 +5,7 @@
 export default {
     props: ['chartData'],
     watch: {
-        axisData() {
+        chartData() {
             this.draw();
         },
     },

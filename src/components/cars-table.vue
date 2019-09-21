@@ -3,7 +3,9 @@
         <el-tabs tab-position="left" style="height: 240px;">
             <el-tab-pane v-for="(group, index) in groupNames" :label="group" :key="group">
                 <ul class="car-group">
-                    <li v-for="car in cars[index]" class="car-item" :key="car.name" @click="onSelect(car)">{{ car.name }}</li>
+                    <li v-for="car in cars[index]" :key="car.name" @click="onSelect(car)"
+                        :class="{selected: selected && selected.name === car.name, selected2: selected2 && selected2.name === car.name}"
+                        class="car-item">{{ car.name }}</li>
                 </ul>
             </el-tab-pane>
         </el-tabs>
@@ -13,7 +15,7 @@
 import { Cars, CarFilters } from '../constants/game';
 
 export default {
-    props: ['cars', 'onSelect'],
+    props: ['cars', 'selected', 'selected2', 'onSelect'],
     data() {
         return {
             groupNames: CarFilters,
@@ -33,5 +35,12 @@ export default {
 
     margin-right: 20px;
     margin-bottom: 20px;
+
+    &.selected {
+        border-color: blue;
+    }
+    &.selected2 {
+        border-color: red;
+    }
 }
 </style>
