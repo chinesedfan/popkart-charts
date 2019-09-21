@@ -1,15 +1,15 @@
 <template>
-    <div>
-        <el-row>
+    <div class="main-container">
+        <el-row style="padding: 40px 0; height: 450px;">
             <el-col :span="12">
-                <radar-chart :axis-data="axisData"></radar-chart>
+                <radar-chart :chart-data="radarData"></radar-chart>
             </el-col>
             <el-col :span="12">
-                <bar-chart></bar-chart>
+                <bar-chart :car="barCar" :other-car="barOtherCar"></bar-chart>
             </el-col>
         </el-row>
         <el-row>
-            <cars-table :cars="cars"></cars-table>
+            <cars-table :cars="cars" :on-select="onCarItemSelect"></cars-table>
         </el-row>
     </div>
 </template>
@@ -32,16 +32,33 @@ export default {
         };
     },
     computed: {
-        axisData() {
+        radarData() {
             return this.cars.map(({name, properties}) => ({
                 axes: properties.map((p, i) => ({
                     axis: CarProps[i],
-                    value: p,
+                    // value: p,
+                    value: 1000,
+                    // value: Math.random() * 1000,
                 }))
-            }))
+            }));
+        },
+        barCar() {
+            return this.cars[0];
+        },
+        barOtherCar() {
+            return this.cars[1];
+        },
+    },
+    methods: {
+        onCarItemSelect(car) {
+
         },
     },
 };
 </script>
 <style lang="less" scoped>
+.main-container {
+    margin: 0 auto;
+    width: 80%;
+}
 </style>

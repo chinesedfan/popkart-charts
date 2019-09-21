@@ -3,7 +3,7 @@
 </template>
 <script>
 export default {
-    props: ['axisData'],
+    props: ['chartData'],
     watch: {
         axisData() {
             this.draw();
@@ -15,13 +15,22 @@ export default {
     methods: {
         draw() {
             const chart = RadarChart.chart();
-            RadarChart.draw('#radar-chart', this.axisData, {
-                w: 450,
-                h: 450,
+            RadarChart.draw('#radar-chart', this.chartData, {
+                w: 300,
+                h: 300,
+                // factor: 0.7,
             });
         },
     },
 };
 </script>
-<style lang="less" scoped>
+<style lang="less">
+/* no scoped */
+#radar-chart {
+    text-align: center;
+    vertical-align: middle;
+}
+.radar-chart {
+    display: inline-block;
+}
 </style>
