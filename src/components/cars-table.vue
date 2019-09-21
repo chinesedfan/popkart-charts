@@ -1,9 +1,9 @@
 <template>
     <div>
         <el-tabs tab-position="left" style="height: 240px;">
-            <el-tab-pane v-for="group in groupNames" :label="group" :key="group">
+            <el-tab-pane v-for="(group, index) in groupNames" :label="group" :key="group">
                 <ul class="car-group">
-                    <li v-for="car in cars" class="car-item" :key="car.name" @click="onSelect(car)">{{ car.name }}</li>
+                    <li v-for="car in cars[index]" class="car-item" :key="car.name" @click="onSelect(car)">{{ car.name }}</li>
                 </ul>
             </el-tab-pane>
         </el-tabs>
@@ -27,8 +27,11 @@ export default {
     flex-wrap: wrap;
 }
 .car-item {
-    flex: 1;
-    width: 20%;
-    padding-bottom: 20%;
+    width: 100px;
+    height: 90px;
+    border: 1px solid #000;
+
+    margin-right: 20px;
+    margin-bottom: 20px;
 }
 </style>

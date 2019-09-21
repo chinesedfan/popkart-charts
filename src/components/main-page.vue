@@ -9,7 +9,7 @@
             </el-col>
         </el-row>
         <el-row>
-            <cars-table :cars="cars" :on-select="onCarItemSelect"></cars-table>
+            <cars-table :cars="tableCars" :on-select="onCarItemSelect"></cars-table>
         </el-row>
     </div>
 </template>
@@ -18,7 +18,7 @@ import RadarChart from './radar-chart';
 import BarChart from './bar-chart';
 import CarsTable from './cars-table';
 
-import { Cars, CarProps } from '../constants/game';
+import { Cars, CarProps, CarFilters } from '../constants/game';
 
 export default {
     components: {
@@ -47,6 +47,24 @@ export default {
         },
         barOtherCar() {
             return this.cars[1];
+        },
+        tableCars() {
+            const cars = Cars;
+            return CarFilters.map((filter) => {
+                switch (filter) {
+                case '竞速':
+                case '道具':
+                    return cars.filter((car) => car.type === filter);
+                case '传说':
+                case '史诗':
+                case '稀有':
+                    return cars.filter((car) => car.rarity === filter);
+                case '全部':
+                    return cars;
+                default:
+                    return [];
+                }
+            });
         },
     },
     methods: {
