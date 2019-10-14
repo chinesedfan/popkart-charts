@@ -45,6 +45,7 @@ export default {
 
                     const car = self.otherCar || self.car;
                     const diff = car.properties[i] - self.car.properties[i];
+                    const min = Math.min(car.properties[i], self.car.properties[i]);
 
                     // label
                     const sLabel = g.append('text')
@@ -56,13 +57,13 @@ export default {
                         .attr('fill', 'blue')
                         .attr('x', labelWidth + 20)
                         .attr('y', i * 30)
-                        .attr('width', Math.floor(car.properties[i] * barWidth / 1000))
+                        .attr('width', Math.floor(min * barWidth / 1000))
                         .attr('height', 25);
                     // value
                     const sValue = g.append('text')
                         .attr('x', labelWidth + 20 + barWidth + 20)
                         .attr('y', sLabel.attr('y'))
-                        .text(Math.min(car.properties[i], self.car.properties[i]));
+                        .text(car.properties[i]);
 
                     if (!self.otherCar) return;
                     // diff bar
