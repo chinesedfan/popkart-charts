@@ -58,6 +58,7 @@ export default {
                 case '传说':
                 case '史诗':
                 case '稀有':
+                case '普通':
                     return cars.filter((car) => car.rarity === filter);
                 case '全部':
                     return cars;
