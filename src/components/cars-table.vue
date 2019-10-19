@@ -6,6 +6,9 @@
                 &nbsp;vs&nbsp;
                 <span class="car-text other">{{ selected2 ? selected2.name : '-' }}</span>
             </div>
+            <el-tooltip style="margin-right: 20px;" effect="dark" :content="tips" placement="top-end">
+                <i class="el-icon-question"></i>
+            </el-tooltip>
             <el-button type="primary" plain @click="onBtnReset">重置</el-button>
             <el-button type="primary" plain @click="onBtnSwap">交换</el-button>
         </div>
@@ -27,6 +30,7 @@ export default {
     props: ['cars', 'selected', 'selected2', 'onBtnReset', 'onBtnSwap', 'onSelect'],
     data() {
         return {
+            tips: '单击选中车辆，再次点击锁定，锁定后点击解锁',
             groupNames: CarFilters,
         };
     },
