@@ -44,6 +44,7 @@ export default {
    align-items: center; 
 }
 .car-text {
+    font-weight: bold;
     color: @color1;
 
     &.other {
@@ -57,16 +58,23 @@ export default {
 .car-item {
     width: 100px;
     height: 90px;
+    line-height: 90px;
+    text-align: center;
     border: 1px solid #000;
+    box-sizing: border-box;
     cursor: pointer;
 
     margin-right: 20px;
     margin-bottom: 20px;
 
-    &.selected {
+    &.selected, &.selected2 {
+        font-weight: bold;
+        border-width: 2px;
+        color: @color1;
         border-color: @color1;
     }
     &.selected2 {
+        color: @color2;
         border-color: @color2;
     }
 }
