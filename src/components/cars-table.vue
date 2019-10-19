@@ -47,6 +47,7 @@ export default {
     width: 100px;
     height: 90px;
     border: 1px solid #000;
+    cursor: pointer;
 
     margin-right: 20px;
     margin-bottom: 20px;
