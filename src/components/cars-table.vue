@@ -71,6 +71,12 @@ export default {
     margin-right: 20px;
     margin-bottom: 20px;
 
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    overflow: hidden;
+
     &.selected, &.selected2 {
         font-weight: bold;
         border-width: 2px;
