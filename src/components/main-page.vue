@@ -1,6 +1,6 @@
 <template>
     <div class="main-container">
-        <el-row style="padding: 40px 0; height: 400px;">
+        <el-row style="padding: 40px 0; height: 380px;">
             <el-col :span="12">
                 <radar-chart :chart-data="radarData"></radar-chart>
             </el-col>

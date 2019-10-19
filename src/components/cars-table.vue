@@ -1,5 +1,10 @@
 <template>
     <div>
+        <div style="padding-bottom: 20px;">
+            <span class="car-text">{{ selected.name }}</span>
+            &nbsp;vs&nbsp;
+            <span class="car-text other">{{ selected2 ? selected2.name : '-' }}</span>
+        </div>
         <el-tabs tab-position="left" style="height: 240px;">
             <el-tab-pane v-for="(group, index) in groupNames" :label="group" :key="group">
                 <ul class="car-group">
@@ -24,6 +29,16 @@ export default {
 };
 </script>
 <style lang="less" scoped>
+@color1: #1f77b4;
+@color2: #ff7f0e;
+
+.car-text {
+    color: @color1;
+
+    &.other {
+        color: @color2;
+    }
+}
 .car-group {
     display: flex;
     flex-wrap: wrap;
@@ -37,10 +52,10 @@ export default {
     margin-bottom: 20px;
 
     &.selected {
-        border-color: blue;
+        border-color: @color1;
     }
     &.selected2 {
-        border-color: red;
+        border-color: @color2;
     }
 }
 .el-tab-pane {
