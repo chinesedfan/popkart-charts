@@ -18,10 +18,7 @@ import RadarChart from './radar-chart';
 import BarChart from './bar-chart';
 import CarsTable from './cars-table';
 
-import { Cars, CarProps, CarFilters } from '../constants/game';
-
-const CAR_MAX =
-    { name: 'MAX', type: '竞速', rarity: '传说', properties: [1000, 1000, 1000, 1000, 1000] };
+import { CAR_MAX, Cars, CarProps, CarFilters } from '../constants/game';
 
 export default {
     components: {
@@ -39,12 +36,14 @@ export default {
     },
     computed: {
         radarData() {
-            return this.cars.map(({name, properties}) => ({
+            const cars = [this.barCar];
+            if (this.barOtherCar) {
+                cars.push(this.barOtherCar);
+            }
+            return cars.map(({name, properties}) => ({
                 axes: properties.map((p, i) => ({
                     axis: CarProps[i],
                     value: p,
-                    // value: 1000,
-                    // value: Math.random() * 1000,
                 }))
             }));
         },

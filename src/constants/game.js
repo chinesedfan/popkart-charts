@@ -1,3 +1,8 @@
+export const CAR_MAX =
+    { name: 'MAX', type: '竞速', rarity: '传说', properties: [1000, 1000, 1000, 1000, 1000] };
+export const CAR_MIN =
+    { name: 'MAX', type: '道具', rarity: '普通', properties: [400, 400, 400, 400, 400] };
+
 export const Cars = [
     { name: '蔷薇棉花糖', type: '竞速', rarity: '传说', properties: [757, 762, 794, 743, 833] },
     { name: '光明骑士', type: '竞速', rarity: '传说', properties: [808, 804, 796, 752, 835] },

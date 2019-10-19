@@ -2,6 +2,8 @@
     <div id="radar-chart"></div>
 </template>
 <script>
+import { CAR_MAX, CAR_MIN } from '../constants/game';
+
 export default {
     props: ['chartData'],
     watch: {
@@ -14,11 +16,21 @@ export default {
     },
     methods: {
         draw() {
+            const maxValue = CAR_MAX.properties[0];
+            const minValue = CAR_MIN.properties[0];
+            // avoid the differences too close
+            const chartData = this.chartData.map(({axes}) => ({
+                axes: axes.map(({axis, value}) => ({axis, value: value - minValue}))
+            }));
+
             const chart = RadarChart.chart();
-            RadarChart.draw('#radar-chart', this.chartData, {
+            RadarChart.draw('#radar-chart', chartData, {
                 w: 300,
                 h: 300,
-                // factor: 0.7,
+                maxValue: maxValue - minValue,
+                minValue: 0,
+                radius: 3,
+                tooltipFormatValue: d => d + minValue,
             });
         },
     },
