@@ -8,4 +8,8 @@ I heard sounds of the engine. I saw the power of money.
 
 [MIT][license]
 
+## Acknowledgement
+
+* [radar-chart-d3](https://github.com/alangrafu/radar-chart-d3), great radar chart by d3
+
 [license]: https://github.com/chinesedfan/popkart-charts/blob/master/LICENSE
