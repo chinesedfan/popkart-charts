@@ -43,4 +43,12 @@ export default {
         border-color: red;
     }
 }
+.el-tab-pane {
+    height: 240px;
+    overflow-y: scroll;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
 </style>
