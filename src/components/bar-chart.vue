@@ -54,10 +54,10 @@ export default {
                         .text(d);
                     // bar
                     const sBar = g.append('rect')
-                        .attr('fill', 'blue')
+                        .attr('fill', '#1f77b4')
                         .attr('x', labelWidth + 20)
                         .attr('y', i * 30)
-                        .attr('width', Math.floor(min * barWidth / 1000))
+                        .attr('width', Math.floor(self.car.properties[i] * barWidth / 1000))
                         .attr('height', 25);
                     // value
                     const sValue = g.append('text')
@@ -67,14 +67,14 @@ export default {
 
                     if (!self.otherCar) return;
                     // diff bar
-                    const diffColor = diff < 0 ? 'green' : 'red';
                     g.append('rect')
-                        .attr('fill', diffColor)
-                        .attr('x', getNumberAttr(sBar, 'x') + getNumberAttr(sBar, 'width'))
+                        .attr('fill', diff < 0 ? '#ff7f0e' : '#ff7f0ea2')
+                        .attr('x', sBar.attr('x'))
                         .attr('y', i * 30)
-                        .attr('width', Math.floor(Math.abs(diff) * barWidth / 1000))
+                        .attr('width', Math.floor(Math.abs(self.otherCar.properties[i]) * barWidth / 1000))
                         .attr('height', 25);
                     // diff value
+                    const diffColor = diff < 0 ? 'green' : 'red';
                     diff && g.append('text')
                         .attr('fill', diffColor)
                         .attr('x', getNumberAttr(sValue, 'x') + 30)
