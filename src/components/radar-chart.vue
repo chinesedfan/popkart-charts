@@ -19,9 +19,11 @@ export default {
             const maxValue = CAR_MAX.properties[0];
             const minValue = CAR_MIN.properties[0];
             // avoid the differences too close
-            const chartData = this.chartData.map(({axes}) => ({
-                axes: axes.map(({axis, value}) => ({axis, value: value - minValue}))
-            }));
+            const chartData = this.chartData.map(({axes}) => {
+                axes = axes.map(({axis, value}) => ({axis, value: value - minValue}))
+                // expect to be clockwise
+                return [axes[0]].concat(axes.slice(1).reverse());
+            });
 
             const chart = RadarChart.chart();
             RadarChart.draw('#radar-chart', chartData, {
