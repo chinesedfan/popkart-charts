@@ -9,7 +9,9 @@
             </el-col>
         </el-row>
         <el-row>
-            <cars-table :cars="tableCars" :selected="barCar" :selected2="barOtherCar" :on-select="onCarItemSelect"></cars-table>
+            <cars-table :cars="tableCars" :selected="barCar" :selected2="barOtherCar"
+                :on-btn-reset="onBtnReset" :on-btn-swap="onBtnSwap"
+                :on-select="onCarItemSelect"></cars-table>
         </el-row>
     </div>
 </template>
@@ -68,6 +70,16 @@ export default {
         },
     },
     methods: {
+        onBtnReset() {
+            this.barCar = CAR_MAX;
+            this.barCarLocked = false;
+            this.barOtherCar = null;
+        },
+        onBtnSwap() {
+            const temp = this.barCar;
+            this.barCar = this.barOtherCar;
+            this.barOtherCar = temp;
+        },
         onCarItemSelect(car) {
             const isSame = car.name === this.barCar.name;
             if (this.barCarLocked) {

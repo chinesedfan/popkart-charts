@@ -1,9 +1,13 @@
 <template>
     <div>
-        <div style="padding-bottom: 20px;">
-            <span class="car-text">{{ selected.name }}</span>
-            &nbsp;vs&nbsp;
-            <span class="car-text other">{{ selected2 ? selected2.name : '-' }}</span>
+        <div class="table-top">
+            <div style="flex: 1; vertical-align: middle;">
+                <span class="car-text">{{ selected.name }}</span>
+                &nbsp;vs&nbsp;
+                <span class="car-text other">{{ selected2 ? selected2.name : '-' }}</span>
+            </div>
+            <el-button type="primary" plain @click="onBtnReset">重置</el-button>
+            <el-button type="primary" plain @click="onBtnSwap">交换</el-button>
         </div>
         <el-tabs tab-position="left" style="height: 240px;">
             <el-tab-pane v-for="(group, index) in groupNames" :label="group" :key="group">
@@ -20,7 +24,7 @@
 import { Cars, CarFilters } from '../constants/game';
 
 export default {
-    props: ['cars', 'selected', 'selected2', 'onSelect'],
+    props: ['cars', 'selected', 'selected2', 'onBtnReset', 'onBtnSwap', 'onSelect'],
     data() {
         return {
             groupNames: CarFilters,
@@ -32,6 +36,13 @@ export default {
 @color1: #1f77b4;
 @color2: #ff7f0e;
 
+.table-top {
+   padding-bottom: 10px;
+   margin-bottom: 10px;
+   border-bottom: 1px solid #d7d7d7;
+   display: flex;
+   align-items: center; 
+}
 .car-text {
     color: @color1;
 
