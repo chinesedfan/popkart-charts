@@ -200,6 +200,10 @@ var RadarChart = {
               return 'legend ' +
               ((p < 0.4) ? 'left' : ((p > 0.6) ? 'right' : 'middle'));
             })
+            .attr('dx', function(d, i) {
+              var p = getHorizontalPosition(i, 0.5);
+              return ((p < 0.4) ? '-3em' : ((p > 0.6) ? '2em' : '0em'));
+            })
             .attr('dy', function(d, i) {
               var p = getVerticalPosition(i, 0.5);
               return ((p < 0.1) ? '1em' : ((p > 0.9) ? '0' : '0.5em'));

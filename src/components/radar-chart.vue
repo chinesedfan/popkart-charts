@@ -27,8 +27,9 @@ export default {
 
             const chart = RadarChart.chart();
             RadarChart.draw('#radar-chart', chartData, {
-                w: 300,
+                w: 400,
                 h: 300,
+                factor: 0.9,
                 maxValue: maxValue - minValue,
                 minValue: 0,
                 radius: 3,
