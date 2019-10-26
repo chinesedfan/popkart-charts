@@ -1,14 +1,14 @@
 <template>
     <div class="main-container">
-        <el-row style="padding: 40px 0; height: 380px;">
-            <el-col :span="12">
+        <el-row class="row-top">
+            <el-col :xs="24" :md="12">
                 <radar-chart :chart-data="radarData"></radar-chart>
             </el-col>
-            <el-col :span="12">
+            <el-col :xs="24" :md="12">
                 <bar-chart :car="barCar" :other-car="barOtherCar"></bar-chart>
             </el-col>
         </el-row>
-        <el-row>
+        <el-row class="row-bottom">
             <cars-table :cars="tableCars" :selected="barCar" :selected2="barOtherCar"
                 :on-btn-reset="onBtnReset" :on-btn-swap="onBtnSwap"
                 :on-select="onCarItemSelect"></cars-table>
@@ -101,7 +101,19 @@ export default {
 </script>
 <style lang="less" scoped>
 .main-container {
+}
+.row-top, .row-bottom {
     margin: 0 auto;
     width: 80%;
+}
+.row-top {
+    padding: 40px 0;
+}
+@media only screen and (max-width: 767px) { // xs
+    .row-top {
+        width: 100%;
+    }
+}
+@media only screen and (min-width: 992px) { // md
 }
 </style>

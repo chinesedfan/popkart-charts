@@ -23,8 +23,8 @@ export default {
     },
     methods: {
         draw() {
-            const w = 570;
-            const h = 300;
+            const w = 520;
+            const h = 180;
 
             const svg = d3.select('#bar-chart')
                 .html('')
@@ -86,7 +86,8 @@ export default {
 };
 </script>
 <style lang="less" scoped>
-div {
+#bar-chart {
     height: 300px;
+    text-align: center;
 }
 </style>
