@@ -1,6 +1,8 @@
 {
   "scripts": {
-    "dev": "webpack-dev-server"
+    "dev": "webpack-dev-server",
+    "build": "webpack --config webpack.config.prod.js",
+    "deploy": "sh deploy.sh"
   },
   "dependencies": {
     "d3": "^5.9.1",
