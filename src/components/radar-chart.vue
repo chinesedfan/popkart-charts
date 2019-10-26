@@ -17,7 +17,7 @@ export default {
     methods: {
         draw() {
             const w = 400;
-            const screenWidth = window.screen.width;
+            const screenWidth = window.document.documentElement.clientWidth;
             const scale = screenWidth >= w ? 1 : screenWidth / w;
 
             const maxValue = CAR_MAX.properties[0];

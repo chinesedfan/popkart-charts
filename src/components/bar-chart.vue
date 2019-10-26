@@ -28,7 +28,7 @@ export default {
             const offsetX = 20;
             const offsetY = 75;
 
-            const screenWidth = window.screen.width;
+            const screenWidth = window.document.documentElement.clientWidth;
             const scale = screenWidth >= w ? 1 : screenWidth / w;
 
             const svg = d3.select('#bar-chart')
