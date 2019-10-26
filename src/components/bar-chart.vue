@@ -23,15 +23,24 @@ export default {
     },
     methods: {
         draw() {
-            const w = 570;
-            const h = 300;
+            const w = 540;
+            const h = 220;
+            const offsetX = 20;
+            const offsetY = 75;
+
+            const screenWidth = window.document.documentElement.clientWidth;
+            const scale = screenWidth >= w ? 1 : screenWidth / w;
 
             const svg = d3.select('#bar-chart')
                 .html('')
                 .append('svg')
-                .attr('transform', `translate(20,75)`)
                 .attr('width', w)
-                .attr('height', h);
+                .attr('height', h)
+                .style('transform', `scale(${scale})`)
+                .style('transform-origin', 'left center')
+                // svg has no `transform` in Safari
+                .append('g')
+                .attr('transform', `translate(${offsetX},${offsetY})`);
 
             const self = this;
             svg.selectAll('g')
@@ -81,12 +90,13 @@ export default {
                         .attr('y', sValue.attr('y'))
                         .text(diff < 0 ? `(${diff})` : `(+${diff})`);
                 });
-        }
+        },
     },
 };
 </script>
 <style lang="less" scoped>
-div {
+#bar-chart {
     height: 300px;
+    text-align: center;
 }
 </style>

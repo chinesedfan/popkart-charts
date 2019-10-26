@@ -88,6 +88,15 @@ export default {
         border-color: @color2;
     }
 }
+@media only screen and (min-width: 375px) and (max-width: 449px) {
+    .car-item {
+        width: 80px;
+        height: 80px;
+        line-height: 80px;
+
+        margin-right: 10px;
+    }
+}
 .el-tab-pane {
     height: 240px;
     overflow-y: scroll;
