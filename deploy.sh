@@ -4,7 +4,7 @@ git checkout -b gh-pages-temp
 
 webpack --config webpack.config.prod.js
 
-sed -e 's#src="/#src="/popkart-charts/#g' index.html > dist/index.html
+sed -e 's#src="/#src="/popkart-charts/#g;s#href="/src#href="/popkart-charts/src#g;' index.html > dist/index.html
 
 git add dist -f
 git commit -m 'always force push'
