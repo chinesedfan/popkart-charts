@@ -2,7 +2,7 @@
 
 I heard sounds of the engine. I saw the power of money.
 
-<img src="example/engine.png" width="80%" />
+<img src="example/engine.jpeg" width="80%" />
 
 ## License
 
