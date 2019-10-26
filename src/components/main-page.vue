@@ -101,6 +101,7 @@ export default {
 </script>
 <style lang="less" scoped>
 .main-container {
+    overflow: hidden;
 }
 .row-top, .row-bottom {
     margin: 0 auto;
