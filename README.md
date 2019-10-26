@@ -2,7 +2,9 @@
 
 I heard sounds of the engine. I saw the power of money.
 
-<img src="example/engine.jpeg" width="80%" />
+<img src="example/engine.jpeg" width="40%" />
+
+Find the best car in http://chinesedfan.github.io/popkart-charts/dist/ and don't be cheated by Tencent.
 
 ## License
 
