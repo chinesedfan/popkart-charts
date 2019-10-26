@@ -16,6 +16,10 @@ export default {
     },
     methods: {
         draw() {
+            const w = 400;
+            const screenWidth = window.screen.width;
+            const scale = screenWidth >= w ? 1 : screenWidth / w;
+
             const maxValue = CAR_MAX.properties[0];
             const minValue = CAR_MIN.properties[0];
             // avoid the differences too close
@@ -27,8 +31,8 @@ export default {
 
             const chart = RadarChart.chart();
             RadarChart.draw('#radar-chart', chartData, {
-                w: 400,
-                h: 300,
+                w: 400 * scale,
+                h: 300 * scale,
                 factor: 0.9,
                 maxValue: maxValue - minValue,
                 minValue: 0,
