@@ -4,7 +4,7 @@
 
 > I heard sounds of the engine. I saw the power of money. - Author
 
-Find the best car in http://chinesedfan.github.io/popkart-charts/dist/ and don't be cheated by Tencent.
+Find the best car in https://chinesedfan.github.io/popkart-charts/dist/ and don't be cheated by Tencent.
 
 <img src="example/engine.jpeg" width="40%" />
 
