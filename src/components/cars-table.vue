@@ -10,7 +10,7 @@
                 <i class="el-icon-question"></i>
             </el-tooltip>
             <el-button type="primary" plain @click="onBtnReset">重置</el-button>
-            <el-button type="primary" plain @click="onBtnSwap">交换</el-button>
+            <el-button type="primary" plain @click="onBtnSwap" :disabled="!selected || !selected2">交换</el-button>
         </div>
         <el-tabs tab-position="left" style="height: 240px;">
             <el-tab-pane v-for="(group, index) in groupNames" :label="group" :key="group">
